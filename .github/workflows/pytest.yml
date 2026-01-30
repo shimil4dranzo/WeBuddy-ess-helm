@@ -33,7 +33,7 @@ jobs:
       manifestTests: ${{ steps.data.outputs.manifestTests }}
       upgradeFrom: ${{ steps.data.outputs.upgradeFrom }}
     steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
       with:
         fetch-depth: 0
         fetch-tags: true
@@ -58,7 +58,7 @@ jobs:
       MATRIX_TEST_COMPONENT: ${{ matrix.test-component }}
       MATRIX_TEST_FROM_REF: ${{ matrix.test-from-ref }}
     steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # v6
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
       with:
         fetch-depth: 0
         fetch-tags: true
@@ -72,7 +72,7 @@ jobs:
         echo "$(poetry env info -p)/bin" >> "${GITHUB_PATH}"
 
     - name: Login to Dockerhub
-      uses: docker/login-action@5e57cd118135c172c3672efd75eb46360885c0ef  # v3
+      uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9  # v3
       if: ${{ github.event.pull_request.head.repo.full_name == 'element-hq/ess-helm' || github.event_name == 'push' || github.event_name == 'workflow_dispatch' }}
       with:
         registry: docker.io
@@ -159,7 +159,7 @@ jobs:
         manifest-test: ${{ fromJSON(needs.pytest-setup.outputs.manifestTests).manifestTests }}
     steps:
     - name: Checkout
-      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8  # v6
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
 
     - uses: matrix-org/setup-python-poetry@5bbf6603c5c930615ec8a29f1b5d7d258d905aa4  # v2
       with:
